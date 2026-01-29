@@ -11,9 +11,30 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('_place__model', function (Blueprint $table) {
+        Schema::create('place_model', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('city_id');
+            $table->string('place_name');
+            $table->string('description');
+            $table->decimal('latitude', 10, 7);
+            $table->string('longitude', 10, 7);
+            $table->integer('price_level');
+            $table->integer('avg_cost_estimate');
+            $table->time('open_time');
+            $table->time('close_time');
+            $table->string('category');
+            $table->integer('rating');
+            $table->integer('visit_duration')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('email')->nullable();
+            $table->integer('number')->nullable();
+            $table->string('other_contact')->nullable();
+            $table->string('extra1')->nullable();
+            $table->string('extra2')->nullable();
+            $table->string('extra3')->nullable();
+            $table->string('extra4')->nullable();
+            $table->string('extra5')->nullable();
         });
     }
 
@@ -22,6 +43,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('_place__model');
+        Schema::dropIfExists('place_model');
     }
 };
