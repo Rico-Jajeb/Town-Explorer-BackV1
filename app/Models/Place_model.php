@@ -3,15 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Place_model extends Model
 {
+
+    use HasFactory;
+    protected $table = 'place_model';
+
     protected $fillable = [
-        'city_id', 'place_name', 'description', 'latitude', 'longitude',
-        'price_level', 'avg_cost_estimate', 'open_time', 'close_time', 'category',
-        'rating', 'visit_duration', 'facebook', 'email', 'number',
-        'other_contact', 'extra1', 'extra2', 'extra3', 
+        'place_name', 'description', 
+        
     ];
 
     public function category()

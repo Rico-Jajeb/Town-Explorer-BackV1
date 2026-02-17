@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Models\Place_model; //tapos adi an moddel
 
-class PlaceService
+class placeService
 {
 
     public function create(array $data)

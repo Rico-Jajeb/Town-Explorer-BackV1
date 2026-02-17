@@ -9,26 +9,28 @@ use Illuminate\Http\Request;
 use App\Http\Requests\placeRequest;
 
 //SERVICE
-use App\Services\PlaceService;
+use App\Services\placeService;
 
 //MODELS
-use App\Models\TechSkillModel;
+use App\Models\Place_model;
 
 class PlaceController extends Controller
 {
-    protected $PlaceService;
+    protected $placeService;
 
 
-    public function __construct(PlaceService $PlaceService,) {
-        $this->PlaceService = $PlaceService;
+    public function __construct(placeService $placeService) {
+        $this->placeService = $placeService;
     }
 
     public function addPlace(placeRequest $request){
         $validated = $request->validated();
-        $place = $this->PlaceService->create($validated);
+        $place = $this->placeService->create($validated);
         return response()->json([
             'message' => 'Place added Successfully',
             'data' => $place,
         ], 201);
     }
+   
+ 
 }
