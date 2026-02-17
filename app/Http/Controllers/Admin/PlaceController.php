@@ -25,7 +25,10 @@ class PlaceController extends Controller
 
     public function addPlace(placeRequest $request){
         $validated = $request->validated();
-        $this->PlaceService->create($validated);
-        return redirect()->route('system.skills')->with('success', "Category Added Successfully!");
+        $place = $this->PlaceService->create($validated);
+        return response()->json([
+            'message' => 'Place added Successfully',
+            'data' => $place,
+        ], 201);
     }
 }
