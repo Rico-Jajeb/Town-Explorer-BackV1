@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 //REQUEST
@@ -11,7 +12,7 @@ use App\Http\Requests\placeRequest;
 use App\Services\PlaceService;
 
 //MODELS
-use App\Models\TechSkillModel; 
+use App\Models\TechSkillModel;
 
 class PlaceController extends Controller
 {
