@@ -18,7 +18,7 @@ class Place_model extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category_model::class);
+        return $this->belongsTo(PlaceCategoryModel::class);
     }
 
     public function city()

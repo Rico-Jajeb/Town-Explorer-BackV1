@@ -8,20 +8,28 @@ use Illuminate\Http\Request;
 use App\Services\CategoryService;
 use Illuminate\Http\JsonResponse;
 
+
+//REQUEST
+use App\Http\Requests\PlaceCategoryRequest;
+
 //RESOURCE
 use App\Http\Resources\CategoryPlaceResources;
 
 //MODEL
 use App\Models\PlaceCategoryModel;
 
+//SERVICE
+use App\Services\AddCategoryService;
 
 class PlaceCategoryController extends Controller
 {
     protected $CategoryService;
+    protected $AddCategoryService;
 
-    public function __construct(CategoryService $CategoryService)
+    public function __construct(CategoryService $CategoryService, AddCategoryService $AddCategoryService)
     {
         $this->CategoryService = $CategoryService;
+        $this->AddCategoryService = $AddCategoryService;
     }
 
 
@@ -30,13 +38,15 @@ class PlaceCategoryController extends Controller
         $setting = PlaceCategoryModel::findOrFail(1);
         return response()->json(new CategoryPlaceResources($setting));
     }
+  
 
-    // public function index()
-    // {
-    //     $category = $this->CategoryService->getAllCategory();
-    //     return response()->json([
-    //         'status' => 'success',
-    //         'data' => $category
-    //     ]);
-    // }
+    public function addCategoryPlace(PlaceCategoryRequest $request){
+        $validated = $request->validated();
+        $place = $this->AddCategoryService->create($validated);
+        return response()->json([
+            'message' => 'Place added Successfully',
+            'data' => $place,
+        ], 201);
+    }
+  
 }
