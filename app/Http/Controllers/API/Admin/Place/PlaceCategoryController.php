@@ -43,6 +43,7 @@ class PlaceCategoryController extends Controller
     public function addCategoryPlace(PlaceCategoryRequest $request){
         $validated = $request->validated();
         $place = $this->AddCategoryService->create($validated);
+        
         return response()->json([
             'message' => 'Place added Successfully',
             'data' => $place,
