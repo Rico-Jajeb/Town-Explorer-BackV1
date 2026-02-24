@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API\Admin\Place;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Services\CategoryService;
 use Illuminate\Http\JsonResponse;
 
 
@@ -20,6 +19,7 @@ use App\Models\PlaceCategoryModel;
 
 //SERVICE
 use App\Services\AddCategoryService;
+use App\Services\CategoryService;
 
 class PlaceCategoryController extends Controller
 {
@@ -49,5 +49,25 @@ class PlaceCategoryController extends Controller
             'data' => $place,
         ], 201);
     }
-  
+
+    
+    // public function displayCategory()
+    // {
+    //     $categories = PlaceCategoryModel::paginate(5); // fetch all data
+    //     return CategoryPlaceResources::collection($categories); // transform before sending
+    // }
+    //  public function displayCategory()
+    // {
+    //     $categories = $this->CategoryService->getPaginatedCategories(5);
+    //     return CategoryPlaceResources::collection($categories);
+    // }
+
+public function displayCategory()
+{
+    $categories = PlaceCategoryModel::paginate(5);
+    return response()->json($categories);
+}
+
+
+
 }
