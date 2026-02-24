@@ -45,7 +45,7 @@ class PlaceCategoryController extends Controller
         $place = $this->AddCategoryService->create($validated);
         
         return response()->json([
-            'message' => 'Place added Successfully',
+            'message' => 'Category added Successfully!',
             'data' => $place,
         ], 201);
     }
