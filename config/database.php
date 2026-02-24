@@ -96,6 +96,7 @@ return [
             'prefix_indexes' => true,
             'schema' => 'public',
             'search_path' => 'public',
+            'schema' => 'public',
             'sslmode' => env('DB_SSLMODE', 'require'),
         ],
 

@@ -4,11 +4,12 @@
 namespace App\Services;
 
 use App\Models\PlaceCategoryModel;
-
+use Illuminate\Support\Facades\Cache;
 class CategoryService
 {
-    public function getAllCategory()
+    public function getPaginatedCategories($perPage = 5)
     {
-        return PlaceCategoryModel::all(); // Or any complex query
+        return PlaceCategoryModel::paginate($perPage); 
     }
+
 }

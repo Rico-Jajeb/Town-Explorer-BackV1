@@ -27,7 +27,7 @@ class PlaceController extends Controller
         $validated = $request->validated();
         $place = $this->placeService->create($validated);
         return response()->json([
-            'message' => 'Place added Successfully',
+            'message' => 'Category added Successfully',
             'data' => $place,
         ], 201);
     }
