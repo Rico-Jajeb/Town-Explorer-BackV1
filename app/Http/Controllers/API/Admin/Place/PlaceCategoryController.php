@@ -50,23 +50,13 @@ class PlaceCategoryController extends Controller
         ], 201);
     }
 
-    
-    // public function displayCategory()
-    // {
-    //     $categories = PlaceCategoryModel::paginate(5); // fetch all data
-    //     return CategoryPlaceResources::collection($categories); // transform before sending
-    // }
-    //  public function displayCategory()
-    // {
-    //     $categories = $this->CategoryService->getPaginatedCategories(5);
-    //     return CategoryPlaceResources::collection($categories);
-    // }
 
-public function displayCategory()
-{
-    $categories = PlaceCategoryModel::paginate(5);
-    return response()->json($categories);
-}
+
+    public function displayCategory()
+    {
+        $categories = PlaceCategoryModel::paginate(5);
+        return response()->json($categories);
+    }
 
 
 
