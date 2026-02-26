@@ -45,4 +45,25 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    // Connect users to roles
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_user');
+    }
+
+    // Helper to check if a user has a role
+    public function hasRole($roleName)
+    {
+        return $this->roles->pluck('name')->contains($roleName);
+    }
+
+    // Helper to check multiple roles
+    public function hasAnyRole(array $roleNames)
+    {
+        return $this->roles->pluck('name')->intersect($roleNames)->isNotEmpty();
+    }
+
+
 }
