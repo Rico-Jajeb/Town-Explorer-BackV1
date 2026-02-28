@@ -12,32 +12,29 @@
     {
 
 
-        public function login(Request $request)
-        {
-            $request->validate([
-                'email' => 'required|string|email',
-                'password' => 'required|string',
-            ]);
 
-            $user = User::where('email', $request->email)->first();
-            
-            // Check if user exists and password matches
-            if (!$user || !Hash::check($request->password, $user->password)) {
-                return response()->json([
-                    'message' => 'The provided credentials are incorrect.'
-                ], 401);
-            }
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
-            $token = $user->createToken('api-token', [], now()->addDays(7))->plainTextToken;
-
+        if (!Auth::attempt($credentials)) {
             return response()->json([
-                'user' => $user,
-                'token' => $token,
-            ], 200);
+                'message' => 'Invalid credentials'
+            ], 401);
         }
+
+        $request->session()->regenerate();
+
+        return response()->json([
+            'user' => Auth::user()
+        ]);
+    }
 
 
    
   
 
-    }
+}
