@@ -13,10 +13,16 @@ use App\Http\Controllers\API\Auth\LogoutController;
 
 
 Route::get('/category', [PlaceCategoryController::class, 'index']);
-Route::post('/add-category', [PlaceCategoryController::class, 'addCategoryPlace']);
-Route::get('/display-category', [PlaceCategoryController::class, 'displayCategory']);
 
-Route::post('/add-place', [PlaceController::class, 'addPlace']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/add-category', [PlaceCategoryController::class, 'addCategoryPlace']);
+    Route::get('/display-category', [PlaceCategoryController::class, 'displayCategory']);
+    Route::post('/add-place', [PlaceController::class, 'addPlace']);
+});
+
+
+
 
 
 

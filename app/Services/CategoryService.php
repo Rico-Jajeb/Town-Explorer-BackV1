@@ -7,9 +7,15 @@ use App\Models\PlaceCategoryModel;
 use Illuminate\Support\Facades\Cache;
 class CategoryService
 {
-    public function getPaginatedCategories($perPage = 5)
+    // public function getPaginatedCategories($perPage = 5)
+    // {
+    //     return PlaceCategoryModel::paginate($perPage); 
+    // }
+
+        // Get all
+    public function getPaginatedCategories()
     {
-        return PlaceCategoryModel::paginate($perPage); 
+        return PlaceCategoryModel::all();
     }
 
 }

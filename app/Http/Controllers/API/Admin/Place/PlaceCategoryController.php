@@ -52,10 +52,16 @@ class PlaceCategoryController extends Controller
 
 
 
+    // public function displayCategory()
+    // {
+    //     $categories = PlaceCategoryModel::all(5);
+    //     return response()->json($categories);
+    // }
+    
     public function displayCategory()
     {
-        $categories = PlaceCategoryModel::paginate(5);
-        return response()->json($categories);
+        $categories = PlaceCategoryModel::all();
+        return CategoryPlaceResources::collection($categories);
     }
 
 
