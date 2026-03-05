@@ -85,20 +85,40 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DB_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'postgres'),
-            'username' => env('DB_USERNAME', 'postgres.xmfsdeldhezrocqjydhp'),
+            'username' => env('DB_USERNAME', 'postgres'),
             'password' => env('DB_PASSWORD', ''),
-            'charset' => env('DB_CHARSET', 'utf8'),
+            'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
             'schema' => 'public',
             'search_path' => 'public',
-            'schema' => 'public',
             'sslmode' => env('DB_SSLMODE', 'require'),
+            'options' => [
+                'options' => '-c endpoint=ep-withered-scene-a1d7l8ja-pooler'
+            ],
         ],
+  
+     
+        // 'pgsql' => [
+        //     'driver' => 'pgsql',
+        //     'url' => env('DB_URL'),
+        //     'host' => env('DB_HOST', '127.0.0.1'),
+        //     'port' => env('DB_PORT', '5432'),
+        //     'database' => env('DB_DATABASE', 'postgres'),
+        //     'username' => env('DB_USERNAME', 'neondb_owner'),
+        //     // 'username' => env('DB_USERNAME', 'postgres.xmfsdeldhezrocqjydhp'), kanan supabase
+        //     'password' => env('DB_PASSWORD', ''),
+        //     'charset' => env('DB_CHARSET', 'utf8'),
+        //     'prefix' => '',
+        //     'prefix_indexes' => true,
+        //     'schema' => 'public',
+        //     'search_path' => 'public',
+        //     'schema' => 'public',
+        //     'sslmode' => env('DB_SSLMODE', 'require'),
+        // ],
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',

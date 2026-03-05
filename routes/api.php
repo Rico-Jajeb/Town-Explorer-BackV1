@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\PlaceController;
 use App\Http\Controllers\API\Auth\RegisterController;
 use App\Http\Controllers\API\Auth\LoginController;
 use App\Http\Controllers\API\Auth\LogoutController;
+use App\Http\Controllers\API\Admin\UserManagement\UserManagementController;
 
 
 Route::get('/category', [PlaceCategoryController::class, 'index']);
@@ -19,7 +20,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/add-category', [PlaceCategoryController::class, 'addCategoryPlace']);
     Route::get('/display-category', [PlaceCategoryController::class, 'displayCategory']);
     Route::post('/add-place', [PlaceCategoryController::class, 'addCategoryPlace']);
+
 });
+
+    Route::get('/display-user', [UserManagementController::class, 'getUsers']);
 
 
 
